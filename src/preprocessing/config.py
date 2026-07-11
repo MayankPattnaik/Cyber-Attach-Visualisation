@@ -42,9 +42,8 @@ DATASETS = {
     },
     "malmem_2022": {
         "description": "CIC-MalMem-2022 malware memory dataset",
-        "kaggle_slug": None,
-        "raw_filename": "cic_malmem_2022.csv",
-        "source": "manual",
-        "manual_url": "https://www.unb.ca/cic/datasets/malmem-2022.html",
+        "kaggle_slug": "samuelsheehy/cicmalmem2022",
+        "raw_filename": "Obfuscated-MalMem2022.csv",
+        "source": "kaggle",
     },
 }

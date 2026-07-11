@@ -62,15 +62,14 @@ def clean(df: pd.DataFrame) -> pd.DataFrame:
     # top-level category (Benign/Spyware/Ransomware/Trojan) and the specific
     # family (TIBS, Zeus, etc.) as separate columns -- this is the feature
     # engineering the proposal's section 4.5 (Malware Family Analytics) needs.
-    sample_val = str(df[label_col].dropna().iloc[0]) if df[label_col].notna().any() else ""
-    if "-" in sample_val:
-        split_cols = df[label_col].astype(str).str.split("-", expand=True)
-        df["category"] = split_cols[0]
+    df["category"] = df[label_col].astype(str)
+    df["family"] = "Benign"
+    is_composite = df[label_col].astype(str).str.contains("-")
+    if is_composite.any():
+        split_cols = df.loc[is_composite, label_col].astype(str).str.split("-", expand=True)
+        df.loc[is_composite, "category"] = split_cols[0]
         if split_cols.shape[1] > 1:
-            df["family"] = split_cols[1]
-    else:
-        # Already a plain label (e.g. just "Benign" / "Malicious")
-        df["category"] = df[label_col]
+            df.loc[is_composite, "family"] = split_cols[1]
 
     df["category"] = df["category"].astype(str).str.strip().str.title()
     if "family" in df.columns:
