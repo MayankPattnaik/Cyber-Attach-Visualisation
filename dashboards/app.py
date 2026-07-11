@@ -429,8 +429,6 @@ with tab_trends:
             fig_loss.update_layout(**PLOTLY_THEME_LAYOUT, height=350, margin={"t": 30, "b": 30, "l": 30, "r": 30})
             st.plotly_chart(fig_loss, use_container_width=True)
 
-            st.plotly_chart(fig_loss, use_container_width=True)
-
         with st.expander("💡 Threat Trend Insights"):
             st.markdown("""
             *   **Timeline Distribution:** Visualizes the chronological rise of security incidents globally. Spikes correlate with major geopolitical events or global malware outbreaks.
