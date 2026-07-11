@@ -1,9 +1,8 @@
 """
-CyberVision - Streamlit Dashboard
-An interactive visual analytics platform implementing the proposal's key tasks.
-
-Usage:
-    streamlit run dashboards/app.py
+CyberVision Dashboard Main Orchestrator.
+Manages global state, sidebar filter inputs, data loader/filter pipelines,
+and handles page routing based on sidebar navigation selection.
+[Refreshed Layout]
 """
 
 import streamlit as st
